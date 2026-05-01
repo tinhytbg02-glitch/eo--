@@ -11,6 +11,7 @@
       font-family: Arial;
     }
 
+
     /* SCREEN 1 */
     #screen1 {
       height: 100vh;
@@ -20,11 +21,7 @@
       align-items: center;
     }
 
-    #screen3 {
-      display: none;
-      height: 100vh;
-      background: url("Screenshot-2.png") no-repeat center/cover;
-    }
+
 
     .start-btn {
       padding: 15px 40px;
@@ -49,7 +46,8 @@
     }
 
     .container {
-      width: 700px;
+      max-width: 800px;
+      width: 100%;
       margin: 0 auto;
     }
 
@@ -116,24 +114,121 @@
     }
 
     /* SCREEN 3 */
+    #screen3 {
+      font-family: "Arial";
+      background-color: #f9f9f9;
+      margin: 0;
+      display: none;
+      justify-content: center;
+      padding-top: 50px;
+    }
 
+    .container2 {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 800px;
+      background-color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
 
-    .xem-btn {
-      padding: 15px 40px;
-      font-size: 11px;
-      background: none;
+    /* Logo */
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      max-width: 120px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Header xanh */
+    .header-title {
+      background-color: #64c5eb;
+      color: white;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+
+    /* Table */
+    .table2 {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      color: #666;
+      font-weight: normal;
+      font-size: 13px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    td {
+      padding: 15px 10px;
+      font-size: 14px;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Button View */
+    .btn-view {
+      background-color: #64c5eb;
       color: white;
       border: none;
-      border-radius: 8px;
-      position: absolute;
-      top: 248px;
-      transform: translateX(-50%);
-      width: 80px;
-      left: 760px;
-      height: 20px;
-      display: block;
+      padding: 5px 15px;
+      border-radius: 15px;
+      font-size: 12px;
       cursor: pointer;
+      text-decoration: none;
     }
+
+    /* Warning Text */
+    .warning-text {
+      color: red;
+      font-size: 13px;
+      text-align: left;
+      margin-top: 10px;
+      padding-left: 5px;
+    }
+
+    /* Footer Text */
+    .footer-msg {
+      margin-top: 40px;
+      color: #555;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+
+    /* Button End */
+    .btn-end {
+      margin-top: 20px;
+      background-color: white;
+      border: 2px solid #64c5eb;
+      color: #333;
+      padding: 10px 40px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-end:hover {
+      background-color: #64c5eb;
+      color: white;
+    }
+
+
+
+
+
 
 
 
@@ -200,8 +295,10 @@
 
   <!-- SCREEN 1 -->
   <div id="screen1">
+    <div class="container">
 
-    <button class=" start-btn" onclick="goNext()"> </button>
+      <button class=" start-btn" onclick="goNext()"> </button>
+    </div>
   </div>
 
   <!-- SCREEN 2 -->
@@ -242,7 +339,54 @@
 
   <!-- SCREEN 3 -->
   <div id="screen3">
-    <button class="xem-btn" onclick="go4()"> </button>
+    <div class="container2">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="logo.jpg" style="left: 10%;">
+      </div>
+
+      <!-- Tiêu đề chính -->
+      <div class="header-title">검진결과</div>
+
+      <!-- Bảng dữ liệu -->
+
+      <table class="table2">
+        <thead>
+          <tr>
+            <th width="30%"><b>검진일자</b></th>
+            <th width="30%"><b>보기(View)</b></th>
+            <th width="40%"><b>검진</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <p style="font-family:Times New Roman;">20260202</p>
+            </td>
+            <td><button class="btn-view" onclick="go4()">보기(View)</button></td>
+            <td>특수검진</td>
+          </tr>
+        </tbody>
+
+      </table>
+
+      <div class="warning-text">
+        ※ 검진 결과는 6개월간 조회 가능합니다.
+      </div>
+
+      <!-- Thông báo cuối -->
+      <div class="footer-msg">
+        <p style="font-family:Times New Roman;"> 결과를 모두 확인하신 분은<br>
+          아래 종료 버튼을 눌러주세요.</p>
+      </div>
+
+      <!-- Nút kết thúc -->
+      <button class="btn-end" onclick="go1()">
+        <p style="font-family:Times New Roman;">종 료 (END)</p>
+      </button>
+    </div>
+
+
   </div>
   <!-- SCREEN 4 -->
   <div id="screen4">
@@ -320,6 +464,10 @@
       function go4() {
         document.getElementById("screen3").style.display = "none";
         document.getElementById("screen4").style.display = "block";
+      }
+      function go1() {
+        document.getElementById("screen3").style.display = "none";
+        document.getElementById("screen1").style.display = "block";
       }
     </script>
 
