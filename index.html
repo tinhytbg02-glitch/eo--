@@ -16,27 +16,25 @@
     #screen1 {
       height: 100vh;
       background: url("Screenshot-1.png") no-repeat center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      position: relative;
     }
 
-
-
+    /* FIX CHUẨN */
     .start-btn {
+      position: absolute;
+      top: 54%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
       padding: 15px 40px;
-      font-size: 20px;
+      font-size: 200px;
       background: none;
       color: white;
       border: none;
       border-radius: 8px;
-      position: absolute;
-      top: 346px;
-      left: 50%;
-      transform: translateX(-50%);
       width: 254px;
-      height: 60px;
-      cursor: pointer;
+      height: 300px;
+
     }
 
     /* SCREEN 2 */
@@ -295,10 +293,8 @@
 
   <!-- SCREEN 1 -->
   <div id="screen1">
-    <div class="container">
+    <button class=" start-btn" onclick="goNext()"> </button>
 
-      <button class=" start-btn" onclick="goNext()"> </button>
-    </div>
   </div>
 
   <!-- SCREEN 2 -->
