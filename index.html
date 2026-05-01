@@ -11,6 +11,39 @@
       font-family: Arial;
     }
 
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid #eee;
+      border-top: 6px solid #64c5eb;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
 
     /* SCREEN 1 */
     #screen1 {
@@ -21,13 +54,13 @@
 
     /* FIX CHUẨN */
     .start-btn {
-      position: relative;
+      position: absolute;
       top: 44%;
       left: 50%;
       transform: translate(-50%, -50%);
 
       padding: 15px 40px;
-      font-size: 200px;
+      font-size: 40px;
       background: none;
       color: white;
       border: none;
@@ -74,8 +107,8 @@
 
     .input-area input,
     .input-area select {
-      padding: 6px;
-      margin-right: 5px;
+      padding: 12px;
+      margin-right: 8px;
     }
 
     .notice {
@@ -290,6 +323,10 @@
 </head>
 
 <body>
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
 
   <!-- SCREEN 1 -->
   <div id="screen1">
@@ -297,14 +334,18 @@
 
   </div>
 
+
   <!-- SCREEN 2 -->
+
+
   <div id="screen2">
+
     <div class="container">
       <div class="title">*결과 확인을 위해 아래 정보를 입력해주세요.</div>
       <table>
         <tr>
           <td class="label">이름(Name)</td>
-          <td class="inputclass">
+          <td class="input-area">
 
             <span><b>Anh tên là HÙNG )))</b> 님</span>
           </td>
@@ -385,6 +426,7 @@
 
   </div>
   <!-- SCREEN 4 -->
+
   <div id="screen4">
 
 
@@ -421,6 +463,15 @@
     </div>
 
     <script>
+      const loader = document.getElementById("loader");
+      const screen1 = document.getElementById("screen1");
+      const screen2 = document.getElementById("screen2");
+      const screen3 = document.getElementById("screen3");
+      const screen4 = document.getElementById("screen4");
+      const result = document.getElementById("result");
+      const year = document.getElementById("year");
+      const month = document.getElementById("month");
+      const day = document.getElementById("day");
       function showGif() {
         document.getElementById("videoBox").style.display = "block";
       }
@@ -429,8 +480,14 @@
     <script>
       // chuyển màn
       function goNext() {
-        screen1.style.display = "none";
-        screen2.style.display = "block";
+        loader.style.display = "flex"; // hiện loading
+
+        setTimeout(() => {
+          loader.style.display = "none";
+
+          screen1.style.display = "none";
+          screen2.style.display = "block";
+        }, 800);
       }
 
       // tạo ngày tháng
@@ -449,8 +506,15 @@
       // kiểm tra
       function checkBirth() {
         if (year.value == "1984" && month.value == "9" && day.value == "9") {
-          screen2.style.display = "none";
-          screen3.style.display = "block";
+
+          loader.style.display = "flex";
+
+          setTimeout(() => {
+            loader.style.display = "none";
+
+            screen2.style.display = "none";
+            screen3.style.display = "flex";
+          }, 600);
         } else {
           result.innerText = "❌ NGÀY SINH ANH HÙNG MÀ @ KHÔNG BIẾT À ))) CHỊU RỒI";
         }
@@ -458,13 +522,39 @@
       }
       // chuyển sang screen 4
       function go4() {
-        document.getElementById("screen3").style.display = "none";
-        document.getElementById("screen4").style.display = "block";
+        loader.style.display = "flex";
+
+        setTimeout(() => {
+          loader.style.display = "none";
+
+          screen3.style.display = "none";
+          screen4.style.display = "block";
+        }, 800);
       }
       function go1() {
-        document.getElementById("screen3").style.display = "none";
-        document.getElementById("screen1").style.display = "block";
+        loader.style.display = "flex";
+
+        setTimeout(() => {
+          loader.style.display = "none";
+
+          screen3.style.display = "none";
+          screen1.style.display = "block";
+        }, 800);
       }
+      function go1() {
+        loader.style.display = "flex";
+
+        setTimeout(() => {
+          loader.style.display = "none";
+        }, 800);
+      }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          document.getElementById("loader").style.display = "none";
+        }, 1000);
+      });
     </script>
 
 </body>
